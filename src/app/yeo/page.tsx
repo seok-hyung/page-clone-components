@@ -1,7 +1,9 @@
-import React from "react"
+import Header from "./kmong/components/Header"
 
-const page = () => {
-  return
+export default function KmongPage() {
+  return (
+    <>
+      <Header />
+    </>
+  )
 }
-
-export default page

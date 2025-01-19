@@ -4,7 +4,6 @@ import { useDebounce } from './useDebouse'
 const useScroll = (delay: number = 100) => {
   const [scrollY, setScrollY] = useState(0)
   const debouncedScrollY = useDebounce(scrollY, delay)
-  const isSticky = debouncedScrollY > 0 // 스크롤이 0보다 크면 sticky 상태
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,7 +17,7 @@ const useScroll = (delay: number = 100) => {
     }
   }, [])
 
-  return { scrollY: debouncedScrollY, isSticky }
+  return { scrollY, debouncedScrollY }
 }
 
 export default useScroll

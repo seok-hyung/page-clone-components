@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Search } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { redirect } from 'next/navigation'
 import useScroll from '../hooks/useScroll'
 import { Banner } from './banner'
@@ -10,7 +10,21 @@ import { Banner } from './banner'
 export const Header = () => {
   const [searchTexts, setSearchTexts] = useState('')
   const [isSearchUi, setIsSearchUi] = useState(false)
+  const { scrollY } = useScroll()
   const [isSticky, setIsSticky] = useState(false)
+
+  useEffect(() => {
+    // Header의 위치가 최상단인지 확인
+    const headerOffset = document
+      .querySelector('header')
+      ?.getBoundingClientRect().top
+
+    if (headerOffset! <= 0) {
+      setIsSticky(true)
+    } else {
+      setIsSticky(false)
+    }
+  }, [scrollY])
 
   const recentSearches: string[] = []
   const recommendedSearches = [
@@ -50,8 +64,11 @@ export const Header = () => {
     <>
       <Banner />
       {/* 로고, 검색창, 버튼들 */}
-      <div className="w-full py-2 z-10 h-16 sticky top-0 insent-x-0 clear-both">
-        <div className="w-[1200px] m-auto flex items-center">
+      <header
+        className={`w-full py-2 z-10 h-16 sticky top-0 insent-x-0 ${
+          isSticky ? 'border-b-[1px] border-gray-400 border-solid' : ''
+        }`}>
+        <div id="header" className="w-[1200px] m-auto flex items-center">
           <Image
             src={'/kmong-main-logo.gif'}
             width={100}
@@ -136,7 +153,7 @@ export const Header = () => {
             </div>
           </div>
         </div>
-      </div>
+      </header>
     </>
   )
 }

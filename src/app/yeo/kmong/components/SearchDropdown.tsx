@@ -1,8 +1,15 @@
 import Link from "next/link"
+import React from "react"
 
-export default function SearchDropdown() {
+interface SearchDropdownProps {
+  dropdownRef: React.RefObject<HTMLDivElement | null>
+}
+
+export default function SearchDropdown({ dropdownRef }: SearchDropdownProps) {
   return (
-    <div className="absolute flex flex-col gap-4 top-[46px] left-0 right-0 p-2 bg-white shadow-[0px_4px_10px_0px_rgba(0,0,0,0.1)] rounded-2xl">
+    <div
+      className="absolute flex flex-col gap-4 top-[46px] left-0 right-0 p-2 bg-white shadow-[0px_4px_10px_0px_rgba(0,0,0,0.1)] rounded-2xl"
+      ref={dropdownRef}>
       <div className="px-3">
         <h3 className="py-[7px] text-xs font-bold text-[#303441]">
           최근 검색어

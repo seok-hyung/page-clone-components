@@ -4,8 +4,35 @@ import Link from "next/link"
 import { CgSearch } from "react-icons/cg"
 import { GoChevronRight } from "react-icons/go"
 import SearchDropdown from "./SearchDropdown"
+import React, { useEffect, useRef, useState } from "react"
 
 export default function Header() {
+  const searchInputRef = useRef<HTMLInputElement | null>(null)
+  const dropdownRef = useRef<HTMLDivElement | null>(null)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+
+  // 검색창 클릭 시 상태값 변경
+  const handleFocusSearchBar = () => {
+    setIsDropdownOpen(true)
+  }
+
+  // 검색창, SearchDropdown 바깥 영역 클릭 시 상태값 변경
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (
+        searchInputRef.current?.contains(e.target as Node) ||
+        dropdownRef.current?.contains(e.target as Node)
+      ) {
+        return
+      }
+      setIsDropdownOpen(false)
+    }
+    document.addEventListener("click", handleClick)
+    return () => {
+      document.removeEventListener("click", handleClick)
+    }
+  }, [])
+
   return (
     <>
       {/* 이벤트 배너 */}
@@ -31,11 +58,13 @@ export default function Header() {
             maxLength={50}
             className="w-full h-full text-sm border-none outline-none transition-colors duration-200 group-hover:bg-[#f2f3f7]"
             aria-label="검색 입력창"
+            ref={searchInputRef}
+            onFocus={handleFocusSearchBar}
           />
           <button className="px-[6px] cursor-pointer">
             <CgSearch className="w-6 h-6" />
           </button>
-          <SearchDropdown />
+          {isDropdownOpen && <SearchDropdown dropdownRef={dropdownRef} />}
         </div>
         <div className="flex items-center gap-6 text-sm text-[#212224]">
           <div>

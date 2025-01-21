@@ -1,4 +1,4 @@
-import Header from "./kmong/components/Header"
+import Header from "./components/Header"
 
 export default function KmongPage() {
   return (

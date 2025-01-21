@@ -116,13 +116,14 @@ export const Header = () => {
                   <div className="p-5">
                     <h4 className="font-bold mb-4">추천 검색어</h4>
                     <ul className="flex flex-wrap gap-2">
-                      {recommendedSearches.map((item, index) => (
-                        <li
-                          key={index}
-                          className="py-1 px-4 hover:bg-gray-100 cursor-pointer rounded-full border-[#eee] border-2">
-                          {item}
-                        </li>
-                      ))}
+                      {recommendedSearches.length > 0 &&
+                        recommendedSearches.map((item, index) => (
+                          <li
+                            key={`${item}${index}`}
+                            className="py-1 px-4 hover:bg-gray-100 cursor-pointer rounded-full border-[#eee] border-2">
+                            {item}
+                          </li>
+                        ))}
                     </ul>
                   </div>
                 </div>

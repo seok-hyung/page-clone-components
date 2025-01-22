@@ -1,10 +1,10 @@
-"use client"
-import Image from "next/image"
-import Link from "next/link"
-import { CgSearch } from "react-icons/cg"
-import { GoChevronRight } from "react-icons/go"
-import SearchDropdown from "./SearchDropdown"
-import React, { useEffect, useRef, useState } from "react"
+'use client'
+import Image from 'next/image'
+import Link from 'next/link'
+import { CgSearch } from 'react-icons/cg'
+import { GoChevronRight } from 'react-icons/go'
+import SearchDropdown from './SearchDropdown'
+import React, { useEffect, useRef, useState } from 'react'
 
 export default function Header() {
   const searchInputRef = useRef<HTMLInputElement | null>(null)
@@ -27,9 +27,9 @@ export default function Header() {
       }
       setIsDropdownOpen(false)
     }
-    document.addEventListener("click", handleClick)
+    document.addEventListener('click', handleClick)
     return () => {
-      document.removeEventListener("click", handleClick)
+      document.removeEventListener('click', handleClick)
     }
   }, [])
 
@@ -49,7 +49,7 @@ export default function Header() {
 
       {/* 헤더 */}
       <header className="sticky top-0 flex justify-between items-center px-4 py-2 mx-auto max-w-[1200px] z-50">
-        <Link href="/" className="">
+        <Link href="/yeo/kmong">
           <Image src="/logo.gif" alt="로고" width={100} height={52} />
         </Link>
         <div className="relative flex flex-1 justify-between items-center px-4 py-2 mx-10 w-full border border-[#212224] rounded-3xl transition-colors duration-200 hover:bg-[#f2f3f7] group">

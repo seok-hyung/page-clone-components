@@ -1,7 +1,7 @@
-import React from "react"
+import Header from "./kmong/(header)/page"
 
 const page = () => {
-  return
+  return <Header />
 }
 
 export default page

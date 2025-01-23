@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { redirect } from 'next/navigation'
 import useScroll from '../hooks/useScroll'
 import { Banner } from './banner'
+import { Category } from './category'
 
 export const Header = () => {
   const [searchTexts, setSearchTexts] = useState('')
@@ -155,6 +156,7 @@ export const Header = () => {
           </div>
         </div>
       </header>
+      <Category />
     </>
   )
 }

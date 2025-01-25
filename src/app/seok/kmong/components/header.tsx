@@ -65,7 +65,7 @@ export const Header = () => {
       <Banner />
       {/* 로고, 검색창, 버튼들 */}
       <header
-        className={`w-full py-2 z-10 h-16 sticky top-0 insent-x-0 ${
+        className={`w-full py-2 z-10 h-16 sticky top-0 insent-x-0 bg-white ${
           isSticky ? 'border-b-[1px] border-gray-400 border-solid' : ''
         }`}>
         <div id="header" className="w-[1200px] m-auto flex items-center">
@@ -76,11 +76,11 @@ export const Header = () => {
             alt="main-logo"
           />
           <form onSubmit={handleSearchSubmit} className="mx-10 w-[60%]">
-            <div className="w-full py-2 border-solid border-[1px] border-black rounded-full relative">
+            <div className="w-full py-2 border-solid border-[1px] border-black rounded-full relative hover:bg-[#f2f3f7] group">
               <div className="flex justify-between gap-4 mx-5">
                 <input
                   type="text"
-                  className="w-full focus:outline-none"
+                  className="w-full focus:outline-none group-hover:bg-[#f2f3f7]"
                   value={searchTexts}
                   onChange={handleInputChange}
                   onFocus={openSearchModal}
@@ -95,7 +95,7 @@ export const Header = () => {
                 <div
                   className="absolute top-14 left-0 w-full bg-white border border-gray-300 rounded-xl shadow-md z-10"
                   onMouseDown={(e) => e.preventDefault()}>
-                  <div className="p-2">
+                  <div className="p-5">
                     <h4 className="font-bold">최근 검색어</h4>
                     <ul>
                       {recentSearches.length > 0 ? (
@@ -113,16 +113,17 @@ export const Header = () => {
                       )}
                     </ul>
                   </div>
-                  <div className="p-2">
-                    <h4 className="font-bold">추천 검색어</h4>
+                  <div className="p-5">
+                    <h4 className="font-bold mb-4">추천 검색어</h4>
                     <ul className="flex flex-wrap gap-2">
-                      {recommendedSearches.map((item, index) => (
-                        <li
-                          key={index}
-                          className="py-1 px-4 hover:bg-gray-100 cursor-pointer rounded-full border-[#eee] border-2">
-                          {item}
-                        </li>
-                      ))}
+                      {recommendedSearches.length > 0 &&
+                        recommendedSearches.map((item, index) => (
+                          <li
+                            key={`${item}${index}`}
+                            className="py-1 px-4 hover:bg-gray-100 cursor-pointer rounded-full border-[#eee] border-2">
+                            {item}
+                          </li>
+                        ))}
                     </ul>
                   </div>
                 </div>

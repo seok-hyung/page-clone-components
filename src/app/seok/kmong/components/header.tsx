@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { redirect } from 'next/navigation'
 import useScroll from '../hooks/useScroll'
 import { Banner } from './banner'
+import { Category } from './category'
 
 export const Header = () => {
   const [searchTexts, setSearchTexts] = useState('')
@@ -93,7 +94,7 @@ export const Header = () => {
               </div>
               {isSearchUi && (
                 <div
-                  className="absolute top-14 left-0 w-full bg-white border border-gray-300 rounded-xl shadow-md z-10"
+                  className="absolute top-14 left-0 w-full bg-white border border-gray-300 rounded-xl shadow-md z-20"
                   onMouseDown={(e) => e.preventDefault()}>
                   <div className="p-5">
                     <h4 className="font-bold">최근 검색어</h4>
@@ -155,6 +156,7 @@ export const Header = () => {
           </div>
         </div>
       </header>
+      <Category />
     </>
   )
 }

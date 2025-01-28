@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { redirect } from 'next/navigation'
 import useScroll from '../hooks/useScroll'
 import { Banner } from './banner'
-import { Category } from './category'
+import { Category } from './category/category'
 
 export const Header = () => {
   const [searchTexts, setSearchTexts] = useState('')
@@ -67,7 +67,7 @@ export const Header = () => {
       {/* 로고, 검색창, 버튼들 */}
       <header
         className={`w-full py-2 z-10 h-16 sticky top-0 insent-x-0 bg-white ${
-          isSticky ? 'border-b-[1px] border-gray-400 border-solid' : ''
+          isSticky ? 'border-b-[1px] border-gray-200 border-solid' : ''
         }`}>
         <div id="header" className="w-[1200px] m-auto flex items-center">
           <Image
@@ -94,7 +94,7 @@ export const Header = () => {
               </div>
               {isSearchUi && (
                 <div
-                  className="absolute top-14 left-0 w-full bg-white border border-gray-300 rounded-xl shadow-md z-20"
+                  className="absolute left-0 z-20 w-full bg-white border border-gray-300 shadow-md top-14 rounded-xl"
                   onMouseDown={(e) => e.preventDefault()}>
                   <div className="p-5">
                     <h4 className="font-bold">최근 검색어</h4>
@@ -103,7 +103,7 @@ export const Header = () => {
                         recentSearches.map((item) => (
                           <li
                             key={item}
-                            className="py-1 hover:bg-gray-100 cursor-pointer">
+                            className="py-1 cursor-pointer hover:bg-gray-100">
                             {item}
                           </li>
                         ))
@@ -115,7 +115,7 @@ export const Header = () => {
                     </ul>
                   </div>
                   <div className="p-5">
-                    <h4 className="font-bold mb-4">추천 검색어</h4>
+                    <h4 className="mb-4 font-bold">추천 검색어</h4>
                     <ul className="flex flex-wrap gap-2">
                       {recommendedSearches.length > 0 &&
                         recommendedSearches.map((item, index) => (
@@ -149,7 +149,7 @@ export const Header = () => {
               <Link href={'/#'}>로그인</Link>
             </div>
             <div>
-              <Link href={'/#'} className="bg-yellow-400 px-4 py-2 rounded-md ">
+              <Link href={'/#'} className="px-4 py-2 bg-yellow-400 rounded-md ">
                 회원가입
               </Link>
             </div>

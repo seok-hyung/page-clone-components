@@ -9,7 +9,7 @@ import { SubCategoryDropdown } from './sub-category-dropdown'
 import NavCategoryList from './nav-category-list'
 
 export const Category = () => {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
   const [subCategoryData, setSubCategoryData] = useState<SubCategoryData | null>(null)
 
   const businessCategories = [

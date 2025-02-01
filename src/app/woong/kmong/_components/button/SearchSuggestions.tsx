@@ -5,5 +5,9 @@ interface SearchSuggestionsProps {
 }
 
 export default function SearchSuggestions(props: SearchSuggestionsProps) {
-  return <button className="border p-1.5 rounded-xl">{props.children}</button>
+  return (
+    <button className="border border-[#e4e5ed] p-1.5 rounded-[14px] hover:bg-gray-200">
+      {props.children}
+    </button>
+  )
 }

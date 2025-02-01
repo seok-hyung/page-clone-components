@@ -48,7 +48,7 @@ export const Category = () => {
           {/* 드롭다운 메뉴 */}
           {isOpen && (
             <div className="absolute left-0 flex min-w-full shadow-lg w-max rounded-s-md top-full bg-gray-50 z-10">
-              <div className="flex flex-col flex-shrink-0">
+              <div className="flex flex-col flex-shrink-0 w-48">
                 <CategoryList title="비즈니스" categories={businessCategories} onMouseEnter={handleMouseEnter} />
                 <CategoryList title="N잡·커리어" categories={careerCategories} onMouseEnter={handleMouseEnter} />
                 <CategoryList title="취미생활" categories={hobbyCategories} onMouseEnter={handleMouseEnter} />

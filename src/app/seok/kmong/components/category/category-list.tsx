@@ -1,3 +1,4 @@
+import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 
 interface CategoryListProps {
@@ -14,9 +15,10 @@ export const CategoryList = ({ title, categories, onMouseEnter }: CategoryListPr
         {categories.map((category) => (
           <li
             key={`${title}/${category.id}`}
-            className="py-1 hover:bg-gray-100"
+            className="py-1 hover:bg-gray-100 flex justify-between group/item"
             onMouseEnter={() => onMouseEnter(category.id)}>
             <Link href={`category/${title.toLowerCase()}/${category.id}`}>{category.name}</Link>
+            <ChevronRight className="opacity-0 group-hover/item:opacity-100" />
           </li>
         ))}
       </ul>

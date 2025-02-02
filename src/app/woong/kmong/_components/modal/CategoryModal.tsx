@@ -1,6 +1,6 @@
-import Link from "next/link"
-import { useState } from "react"
-import CategoryModalDetail from "./CategoryModalDetail"
+import Link from 'next/link'
+import { useState } from 'react'
+import CategoryModalDetail from './CategoryModalDetail'
 
 export default function CategoryModal() {
   const [modalOpen, setModalOpen] = useState(false)
@@ -9,7 +9,7 @@ export default function CategoryModal() {
     setModalOpen(!modalOpen)
   }
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row z-20">
       <dialog
         open
         onMouseEnter={(e) => e.preventDefault()}

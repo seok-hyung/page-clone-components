@@ -1,9 +1,9 @@
-import Image from "next/image"
-import logo from "@public/kmong.gif"
-import magnifying from "@public/magnifying.svg"
-import Link from "next/link"
-import ModalInput from "./modal/HeaderInputModal"
-import { useState } from "react"
+import Image from 'next/image'
+import logo from '@public/woong/kmong.gif'
+import magnifying from '@public/woong/magnifying.svg'
+import Link from 'next/link'
+import ModalInput from './modal/HeaderInputModal'
+import { useState } from 'react'
 
 export default function Header() {
   const [modalOpen, setModalOpen] = useState(false)
@@ -15,7 +15,7 @@ export default function Header() {
   return (
     <header className="mt-2 ">
       <div className="justify-center flex items-center gap-5">
-        <Link href={"/woong/kmong"} className="mr-6">
+        <Link href={'/woong/kmong'} className="mr-6">
           <Image src={logo} alt="New Year Logo" width={100} height={52} />
         </Link>
 

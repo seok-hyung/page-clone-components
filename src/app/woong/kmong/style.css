@@ -1,5 +1,5 @@
 .navBarPseudo:last-child::after {
-  content: "";
+  content: '';
   width: 1px;
   height: 18px;
   background-color: #e4e5ed;
@@ -13,7 +13,7 @@ li {
   list-style: none;
 }
 .categoryLi:hover::after {
-  content: url("../../../../public/right.svg");
+  content: url('../../../../public/woong/right.svg');
   position: absolute;
   left: 150;
 }

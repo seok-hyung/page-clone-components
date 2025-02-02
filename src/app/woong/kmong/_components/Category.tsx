@@ -1,23 +1,23 @@
-import dropDown from "@public/dropDown.svg"
-import Image from "next/image"
-import Link from "next/link"
-import { useState } from "react"
-import CategoryModal from "./modal/CategoryModal"
+import dropDown from '@public/woong/dropDown.svg'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useState } from 'react'
+import CategoryModal from './modal/CategoryModal'
 
 export default function Category() {
   const [modalOpen, setModalOpen] = useState(false)
   const trendingCategoryNav = [
-    "디자인",
-    "마케팅",
-    "영상·사진·음향",
-    "IT·프로그래밍",
-    "전자책·템플릿",
+    '디자인',
+    '마케팅',
+    '영상·사진·음향',
+    'IT·프로그래밍',
+    '전자책·템플릿',
   ]
   const businessCategoryNav = {
-    prime: "상위 2% Prime",
-    portfolio: "포트폴리오",
-    "freelancer-club": "프리랜서클럽",
-    blog: "크몽로그",
+    prime: '상위 2% Prime',
+    portfolio: '포트폴리오',
+    'freelancer-club': '프리랜서클럽',
+    blog: '크몽로그',
   }
   const toggleModal = () => {
     setModalOpen(!modalOpen)
@@ -58,7 +58,7 @@ export default function Category() {
           {Object.entries(businessCategoryNav).map(([key, value], i) => (
             <li key={i} className="cursor-pointer mb-2">
               <Link
-                href={"kmong/" + key}
+                href={'kmong/' + key}
                 className="pb-[12px] hover:border-b-4 border-b-yellow-400">
                 {value}
               </Link>

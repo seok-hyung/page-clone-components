@@ -109,7 +109,7 @@ export default function Header() {
               <li>
                 <Link
                   href={'/'}
-                  className="bg-[#f5c126] rounded-lg py-1.5 px-3 font-medium hover:bg-yellow-500 active:bg-yellow-600">
+                  className="bg-[#f9d567] rounded-lg py-1.5 px-3 font-medium hover:bg-yellow-500 active:bg-yellow-600">
                   회원가입
                 </Link>
               </li>
@@ -117,8 +117,6 @@ export default function Header() {
           </div>
         </div>
       </header>
-      <main className="h-screen"></main>
-      <main className="bg-red-100 h-screen"></main>
     </>
   )
 }

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { HiOutlineChevronLeft } from 'react-icons/hi'
 import { HiOutlineChevronRight } from 'react-icons/hi'
+import { formatNumber } from '../util/formatNumber'
 
 const bannerList = [
   { id: 1, link: 'link1' },
@@ -100,11 +101,11 @@ export default function Carousel() {
   // 캐러셀 인덱스 포맷 함수
   const formattedIndex = (idx: number, total: number) => {
     if (idx === 1) {
-      return String(total).padStart(2, '0')
+      return formatNumber(total)
     } else if (idx === extendedBannerList.length - 2) {
       return '01'
     } else {
-      return String(idx - 1).padStart(2, '0')
+      return formatNumber(idx - 1)
     }
   }
 
@@ -161,7 +162,7 @@ export default function Carousel() {
             </span>
             <span className="mx-[2px] text-white/50">/</span>
             <span className="text-white/50">
-              {String(bannerList.length).padStart(2, '0')}
+              {formatNumber(bannerList.length)}
             </span>
           </div>
         </div>

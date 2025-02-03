@@ -5,17 +5,18 @@ import carousel3 from '@public/seok/main-carousel3.png'
 import carousel4 from '@public/seok/main-carousel4.png'
 import arrowNext from '@public/woong/arrowNext.svg'
 import arrowPrev from '@public/woong/arrowPrev.svg'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 export default function Carousel() {
   const [centerImageOffset, setCenterImageOffset] = useState(3016)
   const [transitionTrigger, setTransitionTrigger] = useState(true)
+
   const images = [carousel1, carousel2, carousel3, carousel4]
   const loopedImages = [...images, ...images, ...images]
-  const nextCarouselHandler = () => {
-    const nextOffset = centerImageOffset + 724
+  const nextOffset = centerImageOffset + 724
 
+  const nextCarouselHandler = () => {
     if (nextOffset === 5912) {
       setCenterImageOffset(nextOffset)
       setTransitionTrigger(true)
@@ -29,7 +30,6 @@ export default function Carousel() {
       setTransitionTrigger(true)
     }
   }
-  console.log(centerImageOffset)
 
   const prevCarouselHandler = () => {
     const prevOffset = centerImageOffset - 724
@@ -48,6 +48,36 @@ export default function Carousel() {
     }
   }
 
+  useEffect(() => {
+    const autoNextCarouselPlayer = () => {
+      setCenterImageOffset(nextOffset)
+
+      if (nextOffset === 5912) {
+        setCenterImageOffset(nextOffset)
+        setTransitionTrigger(true)
+
+        setTimeout(() => {
+          setCenterImageOffset(3016)
+          setTransitionTrigger(false)
+        }, 500)
+      } else {
+        setCenterImageOffset(nextOffset)
+        setTransitionTrigger(true)
+      }
+    }
+
+    const intervalId = setInterval(() => {
+      autoNextCarouselPlayer()
+    }, 5000)
+
+    return () => clearInterval(intervalId)
+  }, [centerImageOffset, nextOffset])
+
+  console.log(centerImageOffset)
+  let carouselNumber = (centerImageOffset - 3016) / 724 + 1
+  if (carouselNumber > 4) {
+    carouselNumber = 1
+  }
   return (
     <div className="flex gap-6 mt-10 overflow-hidden">
       {/* gap-6 = 24px 
@@ -58,7 +88,7 @@ export default function Carousel() {
         <Link
           href="#"
           key={i}
-          className={`w-[700px] h-[280px] flex-shrink-0 cursor-pointer`}
+          className={`w-[700px] h-[280px] flex-shrink-0 cursor-pointer overflow-hidden relative`}
           style={{
             transform: `translateX(-${centerImageOffset}px)`,
             transition: transitionTrigger ? '0.5s ease-out' : '',
@@ -68,14 +98,18 @@ export default function Carousel() {
             alt="캐러셀 이미지"
             width={0}
             height={0}
-            className="rounded-2xl"
+            className="rounded-2xl "
           />
-          <div></div>
         </Link>
       ))}
+      <div className="absolute left-[1230px] top-[440px] px-2 py-1 rounded-full bg-[#0006] text-white text-center ">
+        <span>{'0' + carouselNumber}</span>
+        <span className="ml-1 opacity-50">/</span>
+        <span className="ml-1 opacity-50">{'0' + images.length}</span>
+      </div>
       <button
         onClick={nextCarouselHandler}
-        className=" w-8 h-8 absolute rounded-full bg-[#919191] text-red-800 right-[33%] top-1/3 opacity-50 hover:bg-white">
+        className=" w-8 h-8  rounded-full bg-[#ffffff] text-red-800 absolute left-[1250px] top-[320px] opacity-50 hover:opacity-100">
         <Image
           width={0}
           height={0}
@@ -86,7 +120,7 @@ export default function Carousel() {
       </button>
       <button
         onClick={prevCarouselHandler}
-        className="w-8 h-8 absolute rounded-full bg-[#919191] text-red-800 left-[32%] top-1/3 opacity-50 hover:bg-white">
+        className="w-8 h-8 rounded-full bg-[#ffffff] text-red-800 absolute left-[620px] top-[320px] opacity-50 hover:opacity-100">
         <Image
           width={0}
           height={0}

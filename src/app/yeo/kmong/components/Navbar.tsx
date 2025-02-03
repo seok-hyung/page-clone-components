@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { HiOutlineChevronDown } from 'react-icons/hi'
+import DropdownCategories from './DropdownCategories'
 
 interface Category {
   categoryName: string
@@ -40,10 +41,13 @@ export default function Navbar() {
   return (
     <nav className="bg-white border-b border-[#e4e5ed]">
       <div className="flex items-center gap-5 mx-auto max-w-[1200px] text-[#303441]">
-        <button className="relative flex gap-1 items-center py-3 ml-4 text-[#303441] font-bold after:absolute after:[''] after:left-0 after:bottom-0 after:w-full after:h-1 after:bg-[#ffd401] after:opacity-0 hover:after:opacity-100">
-          <span>전체 카테고리</span>
-          <HiOutlineChevronDown className="inline-block w-4 h-4" />
-        </button>
+        <div className="relative">
+          <button className="relative flex gap-1 items-center py-3 ml-4 text-[#303441] font-bold after:absolute after:[''] after:left-0 after:bottom-0 after:w-full after:h-1 after:bg-[#ffd401] after:opacity-0 hover:after:opacity-100">
+            <span>전체 카테고리</span>
+            <HiOutlineChevronDown className="inline-block w-4 h-4" />
+          </button>
+          <DropdownCategories />
+        </div>
         <ul className="flex gap-5 items-center">
           {navList(serviceCategories)}
         </ul>

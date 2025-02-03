@@ -5,7 +5,7 @@ import { CgSearch } from 'react-icons/cg'
 import { GoChevronRight } from 'react-icons/go'
 import SearchDropdown from './SearchDropdown'
 import React, { useEffect, useRef, useState } from 'react'
-import useScroll from '../hooks/useScroll'
+import useScroll from '../../hooks/useScroll'
 
 export default function Header() {
   const searchInputRef = useRef<HTMLInputElement | null>(null)

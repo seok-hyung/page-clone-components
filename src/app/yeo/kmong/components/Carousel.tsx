@@ -18,6 +18,7 @@ const bannerList = [
 export default function Carousel() {
   const [currentIdx, setCurrentIdx] = useState(2)
   const [transition, setTransition] = useState(true)
+  const [isInView, setIsInView] = useState(true)
 
   const firstBanner = bannerList[0]
   const secondBanner = bannerList[1]
@@ -55,14 +56,34 @@ export default function Carousel() {
   }, [currentIdx, extendedBannerList.length])
 
   useEffect(() => {
-    // 4초마다 캐러셀 자동 전환
-    const interval = setInterval(() => {
-      setTransition(true)
-      setCurrentIdx((prev) => prev + 1)
-    }, 4000)
+    let interval: NodeJS.Timeout | undefined
 
-    return () => clearInterval(interval)
-  }, [])
+    // 브라우저 탭 활성화/비활성화에 따른 이벤트 핸들러
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        setIsInView(false)
+      } else {
+        setIsInView(true)
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+
+    if (isInView) {
+      // isInView가 true일 때 4초마다 캐러셀 자동 전환
+      interval = setInterval(() => {
+        setTransition(true)
+        setCurrentIdx((prev) => prev + 1)
+      }, 4000)
+    } else {
+      clearInterval(interval)
+    }
+
+    return () => {
+      clearInterval(interval)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
+  }, [isInView])
 
   // 이전 버튼 클릭 함수
   const handlePrevButton = () => {

@@ -54,6 +54,16 @@ export default function Carousel() {
     return () => clearTimeout(transitionTimeout)
   }, [currentIdx, extendedBannerList.length])
 
+  useEffect(() => {
+    // 4초마다 캐러셀 자동 전환
+    const interval = setInterval(() => {
+      setTransition(true)
+      setCurrentIdx((prev) => prev + 1)
+    }, 4000)
+
+    return () => clearInterval(interval)
+  }, [])
+
   // 이전 버튼 클릭 함수
   const handlePrevButton = () => {
     setTransition(true)
@@ -86,7 +96,7 @@ export default function Carousel() {
           <li
             key={idx}
             className={`w-full min-w-[703px] max-w-[703px] min-h-full overflow-hidden ${
-              transition && 'transition-transform duration-300 ease-in-out'
+              transition && 'transition-transform duration-500'
             }`}
             style={{
               transform: `translateX(-${(currentIdx - 1) * 723}px)`,
@@ -115,12 +125,12 @@ export default function Carousel() {
       <div className="absolute mx-auto w-[703px] h-[280px] top-0 left-[50%] -translate-x-1/2">
         <div className="relative w-full h-full">
           <button
-            className="absolute flex justify-center items-center w-8 h-8 left-2 bottom-[124px] bg-white opacity-50 rounded-[50%]"
+            className="absolute flex justify-center items-center w-8 h-8 left-2 bottom-[124px] bg-white opacity-50 rounded-[50%] shadow-[0_0_0_1px_transparent,0_0_0_4px_transparent,0_2px_4px_rgba(0,0,0,0.18)]"
             onClick={handlePrevButton}>
             <HiOutlineChevronLeft className="w-4 h-4 text-[#212224]" />
           </button>
           <button
-            className="absolute flex justify-center items-center w-8 h-8 right-2 bottom-[124px] bg-white opacity-50 rounded-[50%]"
+            className="absolute flex justify-center items-center w-8 h-8 right-2 bottom-[124px] bg-white opacity-50 rounded-[50%] shadow-[0_0_0_1px_transparent,0_0_0_4px_transparent,0_2px_4px_rgba(0,0,0,0.18)]"
             onClick={handleNextButton}>
             <HiOutlineChevronRight className="w-4 h-4 text-[#212224]" />
           </button>

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useDebounce } from './useDebouse'
 
-const useScroll = (delay: number = 100) => {
+const useScroll = () => {
   const [scrollY, setScrollY] = useState(0)
-  const debouncedScrollY = useDebounce(scrollY, delay)
+  const debouncedScrollY = scrollY
 
   useEffect(() => {
     const handleScroll = () => {

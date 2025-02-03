@@ -78,24 +78,33 @@ export default function Carousel() {
   }
 
   return (
-    <div className="relative h-[280px] overflow-hidden">
+    <div className="relative w-screen h-[280px] overflow-hidden">
       <ul
-        className="flex w-[2148px] overflow-hidden"
+        className="flex gap-5 w-[2148px] overflow-hidden"
         style={{ transform: 'translateX(calc((100vw - 2148px) / 2))' }}>
         {extendedBannerList.map((bannerLink, idx) => (
           <li
             key={idx}
-            className={`mx-[10px] w-full min-w-[703px] max-w-[703px] min-h-full overflow-hidden ${
+            className={`w-full min-w-[703px] max-w-[703px] min-h-full overflow-hidden ${
               transition && 'transition-transform duration-300 ease-in-out'
             }`}
             style={{
               transform: `translateX(-${(currentIdx - 1) * 723}px)`,
             }}>
-            <Link href={`yeo/kmong/${bannerLink.link}`} className="w-full">
+            <Link
+              href={`yeo/kmong/${bannerLink.link}`}
+              className="relative w-full">
+              <div
+                className={`absolute w-full h-full rounded-2xl ${
+                  idx === currentIdx
+                    ? 'transparent'
+                    : 'bg-black opacity-50 transition-opacity duration-200'
+                }`}
+              />
               <Image
                 src={`/banner/banner_${bannerLink.id}.webp`}
                 className="rounded-2xl"
-                width={700}
+                width={703}
                 height={280}
                 alt={`${bannerLink.id}번째 배너 이미지`}
               />
@@ -103,8 +112,8 @@ export default function Carousel() {
           </li>
         ))}
       </ul>
-      <div className="absolute mx-auto w-[700px] h-[280px] top-0 left-[50%] -translate-x-1/2">
-        <div className="relative w-[700px] h-[280px] ">
+      <div className="absolute mx-auto w-[703px] h-[280px] top-0 left-[50%] -translate-x-1/2">
+        <div className="relative w-full h-full">
           <button
             className="absolute flex justify-center items-center w-8 h-8 left-2 bottom-[124px] bg-white opacity-50 rounded-[50%]"
             onClick={handlePrevButton}>

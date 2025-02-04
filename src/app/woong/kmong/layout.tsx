@@ -8,10 +8,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return (
-    <div className={notoSansKr.className}>
-      {children}
-      <aside id="modal-root"></aside>
-    </div>
-  )
+  return <div className={notoSansKr.className}>{children}</div>
 }

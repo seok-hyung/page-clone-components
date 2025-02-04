@@ -1,0 +1,19 @@
+.navBarPseudo:last-child::after {
+  content: '';
+  width: 1px;
+  height: 18px;
+  background-color: #e4e5ed;
+  display: inline-block;
+  position: relative;
+  top: 2;
+  left: 18;
+  cursor: default;
+}
+li {
+  list-style: none;
+}
+.categoryLi:hover::after {
+  content: url('../../../../public/woong/right.svg');
+  position: absolute;
+  left: 150;
+}

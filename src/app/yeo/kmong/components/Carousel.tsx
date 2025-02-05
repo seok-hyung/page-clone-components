@@ -130,11 +130,11 @@ export default function Carousel() {
                 className={`absolute w-full h-full rounded-2xl ${
                   idx === currentIdx
                     ? 'transparent'
-                    : 'bg-black opacity-50 transition-opacity duration-200'
+                    : 'bg-black opacity-50 duration-200'
                 }`}
               />
               <Image
-                src={`/banner/banner_${bannerLink.id}.webp`}
+                src={`/yeo/banner/banner_${bannerLink.id}.webp`}
                 className="rounded-2xl"
                 width={703}
                 height={280}

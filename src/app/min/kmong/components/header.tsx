@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import magnifying from '@public/magnifying.svg'
+import magnifying from '@public/min/magnifying.svg'
 import { useEffect, useRef, useState } from 'react'
 
 const list = ['react', 'html', 'javascript', 'next', 'css']

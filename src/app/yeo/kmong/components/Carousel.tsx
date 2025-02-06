@@ -20,6 +20,7 @@ export default function Carousel() {
   const [currentIdx, setCurrentIdx] = useState(2)
   const [transition, setTransition] = useState(true)
   const [isInView, setIsInView] = useState(true)
+  const [isHovered, setIsHovered] = useState(false)
 
   const firstBanner = bannerList[0]
   const secondBanner = bannerList[1]
@@ -70,8 +71,8 @@ export default function Carousel() {
 
     document.addEventListener('visibilitychange', handleVisibilityChange)
 
-    if (isInView) {
-      // isInView가 true일 때 4초마다 캐러셀 자동 전환
+    if (isInView && !isHovered) {
+      // 현재 탭이 활성화 상태이고 배너에 hover가 아니면 4초마다 캐러셀 자동 전환
       interval = setInterval(() => {
         setTransition(true)
         setCurrentIdx((prev) => prev + 1)
@@ -84,7 +85,10 @@ export default function Carousel() {
       clearInterval(interval)
       document.removeEventListener('visibilitychange', handleVisibilityChange)
     }
-  }, [isInView])
+  }, [isInView, isHovered])
+
+  const handleMouseEnter = () => setIsHovered(true)
+  const handleMouseLeave = () => setIsHovered(false)
 
   // 이전 버튼 클릭 함수
   const handlePrevButton = () => {
@@ -122,7 +126,9 @@ export default function Carousel() {
             }`}
             style={{
               transform: `translateX(-${(currentIdx - 1) * 723}px)`,
-            }}>
+            }}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}>
             <Link
               href={`yeo/kmong/${bannerLink.link}`}
               className="relative w-full">
@@ -144,15 +150,15 @@ export default function Carousel() {
           </li>
         ))}
       </ul>
-      <div className="absolute mx-auto w-[703px] h-[280px] top-0 left-[50%] -translate-x-1/2">
+      <div className="absolute mx-auto w-[703px] h-[280px] top-0 left-[50%] -translate-x-1/2 pointer-events-none">
         <div className="relative w-full h-full">
           <button
-            className="absolute flex justify-center items-center w-8 h-8 left-2 bottom-[124px] bg-white opacity-50 rounded-[50%] shadow-[0_0_0_1px_transparent,0_0_0_4px_transparent,0_2px_4px_rgba(0,0,0,0.18)]"
+            className="absolute flex justify-center items-center w-8 h-8 left-2 bottom-[124px] bg-white opacity-50 rounded-[50%] shadow-[0_0_0_1px_transparent,0_0_0_4px_transparent,0_2px_4px_rgba(0,0,0,0.18)] hover:opacity-100 pointer-events-auto"
             onClick={handlePrevButton}>
             <HiOutlineChevronLeft className="w-4 h-4 text-[#212224]" />
           </button>
           <button
-            className="absolute flex justify-center items-center w-8 h-8 right-2 bottom-[124px] bg-white opacity-50 rounded-[50%] shadow-[0_0_0_1px_transparent,0_0_0_4px_transparent,0_2px_4px_rgba(0,0,0,0.18)]"
+            className="absolute flex justify-center items-center w-8 h-8 right-2 bottom-[124px] bg-white opacity-50 rounded-[50%] shadow-[0_0_0_1px_transparent,0_0_0_4px_transparent,0_2px_4px_rgba(0,0,0,0.18)] hover:opacity-100 pointer-events-auto"
             onClick={handleNextButton}>
             <HiOutlineChevronRight className="w-4 h-4 text-[#212224]" />
           </button>

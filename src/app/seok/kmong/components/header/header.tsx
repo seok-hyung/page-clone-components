@@ -63,7 +63,7 @@ export const Header = () => {
         isSticky ? 'border-b-[1px] border-gray-200 border-solid' : ''
       }`}>
       <div id="header" className="w-[1200px] m-auto flex items-center">
-        <Image src={'/seok/kmong-main-logo.gif'} width={100} height={60} alt="main-logo" />
+        <Image src={'/seok/kmong-main-logo.gif'} width={100} height={60} alt="main-logo" unoptimized />
         <form onSubmit={handleSearchSubmit} className="mx-10 w-[60%]">
           <div className="w-full py-2 border-solid border-[1px] border-black rounded-full relative hover:bg-[#f2f3f7] group">
             <div className="flex justify-between gap-4 mx-5">

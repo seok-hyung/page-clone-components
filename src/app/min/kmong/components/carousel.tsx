@@ -1,8 +1,8 @@
 'use client'
 
 import useEmblaCarousel from 'embla-carousel-react'
-import React, { useEffect } from 'react'
-import Image from 'next/image'
+import React from 'react'
+import Image, { StaticImageData } from 'next/image'
 import { EmblaOptionsType } from 'embla-carousel'
 
 import a1 from '@public/webp/1-1.webp'
@@ -65,78 +65,193 @@ import o1 from '@public/webp/15-1.webp'
 import o2 from '@public/webp/15-2.webp'
 import o3 from '@public/webp/15-3.webp'
 import o4 from '@public/webp/15-4.webp'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 // 첫번째 슬라이드
-const webp1 = [a1, a2, a3, a4]
-const webp2 = [b1, b2, b3, b4]
-const webp3 = [c1, c2, c3, c4]
-const webp4 = [d1, d2, d3]
-const webp5 = [e1, e2, e3]
+// const webp1 = [a1, a2, a3, a4]
+// const webp2 = [b1, b2, b3, b4]
+// const webp3 = [c1, c2, c3, c4]
+// const webp4 = [d1, d2, d3]
+// const webp5 = [e1, e2, e3]
 
-// 두번째 슬라이드
-const webp6 = [f1, f2, f3, f4]
-const webp7 = [g1, g2, g3, g4]
-const webp8 = [h1, h2, h3, h4]
-const webp9 = [i1, i2, i3, i4]
-const webp10 = [j1, j2, j3, j4]
+// // 두번째 슬라이드
+// const webp6 = [f1, f2, f3, f4]
+// const webp7 = [g1, g2, g3, g4]
+// const webp8 = [h1, h2, h3, h4]
+// const webp9 = [i1, i2, i3, i4]
+// const webp10 = [j1, j2, j3, j4]
 
-// 두번째 슬라이드
-const webp11 = [k1, k2, k3, k4]
-const webp12 = [l1, l2, l3, l4]
-const webp13 = [m1, m2, m3, m4]
-const webp14 = [n1, n2, n3, n4]
-const webp15 = [o1, o2, o3, o4]
+// // 두번째 슬라이드
+// const webp11 = [k1, k2, k3, k4]
+// const webp12 = [l1, l2, l3, l4]
+// const webp13 = [m1, m2, m3, m4]
+// const webp14 = [n1, n2, n3, n4]
+// const webp15 = [o1, o2, o3, o4]
 
 const allWebps = [
-  webp1,
-  webp2,
-  webp3,
-  webp4,
-  webp5,
-  webp6,
-  webp7,
-  webp8,
-  webp9,
-  webp10,
-  webp11,
-  webp12,
-  webp13,
-  webp14,
-  webp15,
+  a1,
+  a2,
+  a3,
+  a4,
+  b1,
+  b2,
+  b3,
+  b4,
+  c1,
+  c2,
+  c3,
+  c4,
+  d1,
+  d2,
+  d3,
+  e1,
+  e2,
+  e3,
+  f1,
+  f2,
+  f3,
+  f4,
+  g1,
+  g2,
+  g3,
+  g4,
+  h1,
+  h2,
+  h3,
+  h4,
+  i1,
+  i2,
+  i3,
+  i4,
+  j1,
+  j2,
+  j3,
+  j4,
+  k1,
+  k2,
+  k3,
+  k4,
+  l1,
+  l2,
+  l3,
+  l4,
+  m1,
+  m2,
+  m3,
+  m4,
+  n1,
+  n2,
+  n3,
+  n4,
+  o1,
+  o2,
+  o3,
+  o4,
 ]
 
+console.log('allWebps.length()', allWebps.length)
+
 const OPTIONS: EmblaOptionsType = {
-  containScroll: false,
-  slidesToScroll: 'auto',
+  // slidesToScroll: 'auto',
+  // loop: true,
+  slidesToScroll: 5,
+  // active: false,
+  // containScroll: 'keepSnaps',
+  // containScroll: 'trimSnaps',
 }
 
 export default function Carousel() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
+  const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS)
 
-  useEffect(() => {
-    if (emblaApi) {
-      console.log(emblaApi.slideNodes())
-    }
+  const scrollPrev = React.useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev()
+    console.log('allWebps.length()', allWebps.length)
+  }, [emblaApi])
+
+  const scrollNext = React.useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext()
   }, [emblaApi])
 
   return (
-    <section className="max-w-[210px] m-auto">
+    <section className="w-[1200px] mx-auto relative">
+      <div className="rounded-xl overflow-hidden" ref={emblaRef}>
+        <div className="flex gap-8 basis-1/5">
+          <CarouselDetail imageCount={allWebps.slice(0, 4)} />
+          <CarouselDetail imageCount={allWebps.slice(4, 8)} />
+          <CarouselDetail imageCount={allWebps.slice(8, 12)} />
+          <CarouselDetail imageCount={allWebps.slice(12, 15)} />
+          <CarouselDetail imageCount={allWebps.slice(15, 18)} />
+
+          <CarouselDetail imageCount={allWebps.slice(18, 22)} />
+          <CarouselDetail imageCount={allWebps.slice(22, 26)} />
+          <CarouselDetail imageCount={allWebps.slice(26, 30)} />
+          <CarouselDetail imageCount={allWebps.slice(30, 34)} />
+          <CarouselDetail imageCount={allWebps.slice(34, 38)} />
+
+          <CarouselDetail imageCount={allWebps.slice(38, 42)} />
+          <CarouselDetail imageCount={allWebps.slice(42, 46)} />
+          <CarouselDetail imageCount={allWebps.slice(46, 50)} />
+          <CarouselDetail imageCount={allWebps.slice(50, 54)} />
+          <CarouselDetail imageCount={allWebps.slice(54, 58)} />
+        </div>
+      </div>
+
+      <button
+        onClick={scrollPrev}
+        className="absolute -left-8 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md">
+        <ChevronLeft className="h-4 w-4" />
+      </button>
+      <button
+        onClick={scrollNext}
+        className="absolute -right-8 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md">
+        <ChevronRight className="h-4 w-4" />
+      </button>
+    </section>
+  )
+}
+
+interface CarouselDeatilProps {
+  imageCount: StaticImageData[]
+}
+
+function CarouselDetail({ imageCount }: CarouselDeatilProps) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
+
+  const scrollPrev = React.useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev()
+  }, [emblaApi])
+
+  const scrollNext = React.useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext()
+  }, [emblaApi])
+
+  return (
+    <div className="w-[210px] relative">
       <div className="overflow-hidden rounded-xl" ref={emblaRef}>
         <div className="flex touch-pan-x touch-pinch-zoom">
-          {webp1.map((image, index) => (
+          {imageCount.map((image, index) => (
             <div className="flex-none min-w-0 roundend-3xl" key={index}>
-              <div className="bg-blue-300 h-[158px] w-[210px] rounded-3xl flex items-center justify-center p-0">
+              <div className="h-[158px] w-[210px] rounded-3xl flex items-center justify-center p-0">
                 <Image
                   src={image}
                   alt={`${index} 인덱스입니다.`}
                   className="w-full h-full"
                 />
-                {/* {index} */}
               </div>
             </div>
           ))}
         </div>
       </div>
-    </section>
+      <button
+        onClick={scrollPrev}
+        className="absolute left-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md">
+        <ChevronLeft className="h-4 w-4" />
+      </button>
+      <button
+        onClick={scrollNext}
+        className="absolute right-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md">
+        <ChevronRight className="h-4 w-4" />
+      </button>
+    </div>
   )
 }

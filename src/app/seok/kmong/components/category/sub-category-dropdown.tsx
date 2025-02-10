@@ -8,8 +8,8 @@ export const SubCategoryDropdown = ({ subCategoryData }: SubCategoryDropdownProp
   if (!subCategoryData) return null
 
   return (
-    <div className="w-full p-3 bg-white shadow-lg rounded-e-md">
-      <ul className="flex">
+    <div className="p-3 bg-white shadow-lg rounded-e-md">
+      <ul className="flex rounded-e-md">
         {Object.entries(subCategoryData).map(([key, items]) => (
           <li key={key} className="flex flex-col mr-8 font-bold cursor-default min-w-fit">
             {key}

@@ -13,6 +13,8 @@ export const popularServicesList = [
       '/webp/1-4.webp',
     ],
     link: '/gig/1',
+    master: true,
+    award: true,
   },
   {
     id: 2,
@@ -28,6 +30,7 @@ export const popularServicesList = [
       '/webp/2-4.webp',
     ],
     link: '/gig/2',
+    master: true,
   },
   {
     id: 3,
@@ -43,6 +46,7 @@ export const popularServicesList = [
       '/webp/3-4.webp',
     ],
     link: '/gig/3',
+    master: true,
   },
   {
     id: 4,
@@ -53,6 +57,10 @@ export const popularServicesList = [
     expertName: '지구컴즈',
     src: ['/webp/4-1.webp', '/webp/4-2.webp', '/webp/4-3.webp'],
     link: '/gig/4',
+    prime: true,
+    master: true,
+
+    award: true,
   },
   {
     id: 5,
@@ -63,6 +71,7 @@ export const popularServicesList = [
     expertName: '정튜디오',
     src: ['/webp/5-1.webp', '/webp/5-2.webp', '/webp/5-3.webp'],
     link: '/gig/5',
+    master: true,
   },
   {
     id: 6,
@@ -78,6 +87,7 @@ export const popularServicesList = [
       '/webp/6-4.webp',
     ],
     link: '/gig/6',
+    master: true,
   },
   {
     id: 7,
@@ -93,6 +103,8 @@ export const popularServicesList = [
       '/webp/7-4.webp',
     ],
     link: '/gig/7',
+    prime: true,
+    master: true,
   },
   {
     id: 8,
@@ -108,6 +120,7 @@ export const popularServicesList = [
       '/webp/8-4.webp',
     ],
     link: '/gig/8',
+    master: true,
   },
   {
     id: 9,
@@ -123,6 +136,7 @@ export const popularServicesList = [
       '/webp/9-4.webp',
     ],
     link: '/gig/9',
+    master: true,
   },
   {
     id: 10,
@@ -138,6 +152,7 @@ export const popularServicesList = [
       '/webp/10-4.webp',
     ],
     link: '/gig/10',
+    master: true,
   },
   {
     id: 11,
@@ -153,6 +168,7 @@ export const popularServicesList = [
       '/webp/11-4.webp',
     ],
     link: '/gig/11',
+    master: true,
   },
   {
     id: 12,
@@ -168,6 +184,7 @@ export const popularServicesList = [
       '/webp/12-4.webp',
     ],
     link: '/gig/12',
+    master: true,
   },
   {
     id: 13,

@@ -3,6 +3,7 @@ import useEmblaCarousel from 'embla-carousel-react'
 import { popularServicesList } from '../../constants/popularServicesList'
 import { PrevButton, NextButton, usePrevNextButtons } from './CarouselButton'
 import CarouselCard from './CarouselCard'
+import Image from 'next/image'
 
 export default function PopularServicesCarousel() {
   const servicesList = popularServicesList
@@ -20,9 +21,17 @@ export default function PopularServicesCarousel() {
 
   return (
     <section className="px-4 mx-auto my-20 w-[1200px]">
-      <h2 className="text-xl font-medium text-[#212224]">
-        프리랜서 마켓 No.1 크몽, 인기 서비스
-      </h2>
+      <div className="flex items-center gap-1">
+        <h2 className="text-xl font-medium text-[#212224]">
+          프리랜서 마켓 No.1 크몽, 인기 서비스
+        </h2>
+        <Image
+          src={'/yeo/icons/HOT_icon.png'}
+          width={38}
+          height={20}
+          alt={'HOT 아이콘'}
+        />
+      </div>
       <div className="relative min-h-[279px]">
         <PrevButton
           className={`absolute -left-11 top-1/2 w-10 h-10 transform -translate-y-1/2 transition-all duration-300 ${

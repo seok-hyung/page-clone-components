@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { HiOutlineChevronLeft } from 'react-icons/hi'
 import { HiOutlineChevronRight } from 'react-icons/hi'
-import { formatNumber } from '../util/formatNumber'
+import { formatNumber } from '../../util/formatNumber'
 
 const bannerList = [
   { id: 1, link: 'link1' },

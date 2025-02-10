@@ -27,7 +27,7 @@ export default function ImageCarousel({ title, src }: ImageCarouselProps) {
   const handleMoustLeave = () => setIsHovered(false)
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full mb-2">
       <div
         className="overflow-hidden border border-[rgba(0, 0, 0, 0.1)] rounded-lg"
         ref={carouselRef}>

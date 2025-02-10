@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      embla-carousel:
+        specifier: ^8.5.2
+        version: 8.5.2
       embla-carousel-react:
         specifier: ^8.5.2
         version: 8.5.2(react@19.0.0)
@@ -32,6 +35,9 @@ importers:
       swiper:
         specifier: ^11.2.2
         version: 11.2.2
+      tailwind-merge:
+        specifier: ^3.0.1
+        version: 3.0.1
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3
@@ -1596,6 +1602,9 @@ packages:
   swiper@11.2.2:
     resolution: {integrity: sha512-FmAN6zACpVUbd/1prO9xQ9gKo9cc6RE2UKU/z4oXtS8fNyX4sdOW/HHT/e444WucLJs0jeMId6WjdWM2Lrs8zA==}
     engines: {node: '>= 4.7.0'}
+
+  tailwind-merge@3.0.1:
+    resolution: {integrity: sha512-AvzE8FmSoXC7nC+oU5GlQJbip2UO7tmOhOfQyOmPhrStOGXHU08j8mZEHZ4BmCqY5dWTCo4ClWkNyRNx1wpT0g==}
 
   tailwindcss@3.4.17:
     resolution: {integrity: sha512-w33E2aCvSDP0tW9RZuNXadXlkHXqFzSkQew/aIa2i/Sj8fThxwovwlXHSPXTbAHwEIhBFXAedUhP2tueAKP8Og==}
@@ -3465,6 +3474,8 @@ snapshots:
   supports-preserve-symlinks-flag@1.0.0: {}
 
   swiper@11.2.2: {}
+
+  tailwind-merge@3.0.1: {}
 
   tailwindcss@3.4.17:
     dependencies:

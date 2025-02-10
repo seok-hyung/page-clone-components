@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import ImageCarousel from './ImageCarousel'
 import { HiStar } from 'react-icons/hi2'
+import { useState } from 'react'
 
 interface PopularServicesItems {
   id: number
@@ -18,12 +19,24 @@ export default function CarouselCard({
 }: {
   service: PopularServicesItems
 }) {
+  const [isHovered, setIsHovered] = useState(false)
+
+  const handleMouseEnter = () => setIsHovered(true)
+
+  const handleMoustLeave = () => setIsHovered(false)
+
   return (
     <Link
       href={service.link}
       key={service.id}
-      className="flex flex-col flex-[0_0_20%] max-w-[214px]">
-      <ImageCarousel title={service.title} src={service.src} />
+      className="flex flex-col flex-[0_0_20%] max-w-[214px]"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMoustLeave}>
+      <ImageCarousel
+        title={service.title}
+        src={service.src}
+        isHovered={isHovered}
+      />
       <h3 className="mb-2 text-sm font-bold text-[#212224] break-all">
         {service.title}
       </h3>

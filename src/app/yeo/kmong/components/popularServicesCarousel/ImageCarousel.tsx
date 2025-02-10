@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Image from 'next/image'
 import useEmblaCarousel from 'embla-carousel-react'
 import { PrevButton, NextButton, usePrevNextButtons } from './CarouselButton'
@@ -7,11 +6,15 @@ import { DotButton, useDotButton } from './CarouselDotButton'
 interface ImageCarouselProps {
   title: string
   src: string[]
+  isHovered: boolean
 }
 
-export default function ImageCarousel({ title, src }: ImageCarouselProps) {
+export default function ImageCarousel({
+  title,
+  src,
+  isHovered,
+}: ImageCarouselProps) {
   const [carouselRef, carouselApi] = useEmblaCarousel({ loop: true })
-  const [isHovered, setIsHovered] = useState(false)
 
   const {
     prevBtnDisabled,
@@ -22,10 +25,6 @@ export default function ImageCarousel({ title, src }: ImageCarouselProps) {
 
   const { selectedIndex, scrollSnaps } = useDotButton(carouselApi)
 
-  const handleMouseEnter = () => setIsHovered(true)
-
-  const handleMoustLeave = () => setIsHovered(false)
-
   return (
     <div className="relative w-full mb-2">
       <div
@@ -35,9 +34,7 @@ export default function ImageCarousel({ title, src }: ImageCarouselProps) {
           {src.map((image, idx) => (
             <div
               key={idx}
-              className="flex-[0_0_100%] transform translate-z-0 overflow-hidden"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMoustLeave}>
+              className="flex-[0_0_100%] transform translate-z-0 overflow-hidden">
               <Image
                 src={image}
                 className={`h-full transition-transform origin-center duration-300 ${
@@ -56,20 +53,22 @@ export default function ImageCarousel({ title, src }: ImageCarouselProps) {
           isHovered ? 'opacity-100' : 'opacity-0'
         }`}
         style={{ transform: 'matrix(1, 0, 0, 1, 0, -16)' }}
-        onClick={onPrevButtonClick}
+        onClick={(e) => {
+          e.preventDefault()
+          onPrevButtonClick()
+        }}
         disabled={prevBtnDisabled}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMoustLeave}
       />
       <NextButton
         className={`absolute top-1/2 right-2 w-8 h-8 transform -translate-y-1/2 transition-all duration-300 hover:bg-white ${
           isHovered ? 'opacity-100' : 'opacity-0'
         }`}
         style={{ transform: 'matrix(1, 0, 0, 1, 0, -16)' }}
-        onClick={onNextButtonClick}
+        onClick={(e) => {
+          e.preventDefault()
+          onNextButtonClick()
+        }}
         disabled={nextBtnDisabled}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMoustLeave}
       />
       <div
         className={`absolute flex justify-center gap-1 py-[6px] bottom-0 left-0 right-0 transition-all duration-300 ${

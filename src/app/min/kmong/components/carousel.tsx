@@ -173,7 +173,7 @@ export default function Carousel() {
   }, [emblaApi])
 
   return (
-    <section className="w-[1200px] mx-auto relative">
+    <section className="px-4 w-[1200px] mx-auto relative">
       <div className="rounded-xl overflow-hidden" ref={emblaRef}>
         <div className="flex gap-8 basis-1/5">
           <CarouselDetail imageCount={allWebps.slice(0, 4)} />

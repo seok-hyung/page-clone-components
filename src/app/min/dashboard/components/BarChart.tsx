@@ -1,10 +1,13 @@
 'use client'
 
+import { Chart, registerables } from 'chart.js'
 import { useEffect, useState } from 'react'
+import { Bar } from 'react-chartjs-2'
 import { getTotalUsers, userTotal } from '../api'
 import { User } from '../types'
-import { Bar } from 'react-chartjs-2'
-import { Chart, registerables } from 'chart.js'
+import SplitText from './SplitText'
+import CountUp from './CountUp'
+import { Skeleton } from './ui/skeleton'
 
 // Chart.js에서 필요한 모든 요소를 등록합니다.
 Chart.register(...registerables)
@@ -83,15 +86,41 @@ export default function BarChart() {
     // },
   }
 
+  const handleAnimationComplete = () => {
+    console.log('All letters have animated!')
+  }
+
   if (loading) {
-    return <div>로딩 중...</div>
+    return (
+      <div className="min-w-[1000px] w-1/2 px-20 py-10">
+        <div className="flex flex-col space-y-3 py-10">
+          <Skeleton className="h-10 w-[250px]" />
+          <Skeleton className="h-[400px] w-[800px] rounded-xl" />
+          <div className="space-y-2">
+            <Skeleton className="h-6 w-[250px]" />
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
-    <div className="w-1/2">
-      <h1>성별에 따른 키 분포</h1>
+    <div className="min-w-[1000px] w-1/2 p-20">
+      <SplitText
+        text="성별에 따른 키 분포."
+        className="text-2xl font-semibold text-center"
+        delay={150}
+        animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
+        animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+        threshold={0.2}
+        rootMargin="-50px"
+        onLetterAnimationComplete={handleAnimationComplete}
+      />
       <Bar data={chartData} options={options} />
-      <div>전체 사용자 수: {totalUsers}명</div>
+      <div>
+        전체 사용자 수 :{'  '}
+        <CountUp from={0} to={totalUsers} separator="," direction="up" duration={1} className="count-up-text" />명
+      </div>
     </div>
   )
 }

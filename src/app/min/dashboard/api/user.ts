@@ -1,9 +1,11 @@
 import { User } from '../types'
 
+const USER_API = 'https://dummyjson.com/users'
+
 // 유저 전체 수를 가져오는 함수
 export async function userTotal(): Promise<number> {
   try {
-    const response = await fetch('https://dummyjson.com/users')
+    const response = await fetch(`${USER_API}`)
     const data = await response.json()
 
     return data.total
@@ -17,7 +19,7 @@ export async function userTotal(): Promise<number> {
 export async function getTotalUsers(total: number): Promise<User[]> {
   if (total > 0) {
     try {
-      const response = await fetch(`https://dummyjson.com/users?limit=${total}`)
+      const response = await fetch(`${USER_API}?limit=${total}`)
       const data = await response.json()
 
       return data.users

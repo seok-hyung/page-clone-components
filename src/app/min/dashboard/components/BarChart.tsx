@@ -27,18 +27,20 @@ export default function BarChart() {
   }, [])
 
   // 남성과 여성의 키에 따른 사용자 수 분포 계산
-  const calculateHeightDistributionByGender = (gender: string) => {
+  const calculateHeightDistributionByGender = (genders: string) => {
     const heightDistribution = [0, 0, 0, 0, 0] // 각 구역의 사용자 수
 
-    users.forEach((user) => {
-      if (user.gender === gender) {
-        if (user.height >= 150) heightDistribution[0]++
-        if (user.height >= 160) heightDistribution[1]++
-        if (user.height >= 170) heightDistribution[2]++
-        if (user.height >= 180) heightDistribution[3]++
-        if (user.height >= 190) heightDistribution[4]++
+    users.reduce((acc, { height, gender }) => {
+      // user 객체에서 height 추출
+      if (gender === genders) {
+        if (height >= 150 && height < 160) acc[0]++
+        else if (height >= 160 && height < 170) acc[1]++
+        else if (height >= 170 && height < 180) acc[2]++
+        else if (height >= 180 && height < 190) acc[3]++
+        else if (height >= 190) acc[4]++
       }
-    })
+      return acc
+    }, heightDistribution)
 
     return heightDistribution
   }
@@ -67,24 +69,6 @@ export default function BarChart() {
   }
 
   const totalUsers = users.length // 전체 사용자 수
-
-  const options = {
-    //# 아무것도 안변함
-    // plugins: {
-    //   tooltip: {
-    //     callbacks: {
-    //       title: function (tooltipItems) {
-    //         return tooltipItems[0].label // X축 레이블 표시
-    //       },
-    //       label: function (tooltipItem) {
-    //         const label = tooltipItem.dataset.label || ''
-    //         const value = tooltipItem.raw || 0
-    //         return `${label}: ${value}명`
-    //       },
-    //     },
-    //   },
-    // },
-  }
 
   const handleAnimationComplete = () => {
     console.log('All letters have animated!')

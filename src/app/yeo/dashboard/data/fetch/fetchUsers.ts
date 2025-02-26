@@ -1,8 +1,10 @@
 'use server'
 
+const BASE_URL = 'https://dummyjson.com'
+
 export async function getUsers() {
   try {
-    const res = await fetch('https://dummyjson.com/users?limit=0')
+    const res = await fetch(`${BASE_URL}/users?limit=0`)
     if (!res.ok) {
       throw new Error(`사용자 데이터를 가져오는 데 실패했습니다. ${res.status}`)
     }

@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react'
 import { Bar } from 'react-chartjs-2'
 import { getTotalUsers, userTotal } from '../api'
 import { User } from '../types'
-import SplitText from './SplitText'
 import CountUp from './CountUp'
+import SplitText from './SplitText'
 import { Skeleton } from './ui/skeleton'
 
 // Chart.js에서 필요한 모든 요소를 등록합니다.
@@ -100,7 +100,7 @@ export default function BarChart() {
         rootMargin="-50px"
         onLetterAnimationComplete={handleAnimationComplete}
       />
-      <Bar data={chartData} options={options} />
+      <Bar data={chartData} />
       <div>
         전체 사용자 수 :{'  '}
         <CountUp from={0} to={totalUsers} separator="," direction="up" duration={1} className="count-up-text" />명

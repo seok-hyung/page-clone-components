@@ -28,13 +28,7 @@ export default function Carousel() {
   const secondLastBanner = bannerList[bannerList.length - 2]
 
   // 기존 배너 리스트의 앞,뒤에 배너 2개씩 추가
-  const extendedBannerList = [
-    secondLastBanner,
-    lastBanner,
-    ...bannerList,
-    firstBanner,
-    secondBanner,
-  ]
+  const extendedBannerList = [secondLastBanner, lastBanner, ...bannerList, firstBanner, secondBanner]
 
   useEffect(() => {
     let transitionTimeout: NodeJS.Timeout
@@ -87,9 +81,6 @@ export default function Carousel() {
     }
   }, [isInView, isHovered])
 
-  const handleMouseEnter = () => setIsHovered(true)
-  const handleMouseLeave = () => setIsHovered(false)
-
   // 이전 버튼 클릭 함수
   const handlePrevButton = () => {
     setTransition(true)
@@ -127,16 +118,12 @@ export default function Carousel() {
             style={{
               transform: `translateX(-${(currentIdx - 1) * 723}px)`,
             }}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}>
-            <Link
-              href={`yeo/kmong/${bannerLink.link}`}
-              className="relative w-full">
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}>
+            <Link href={`yeo/kmong/${bannerLink.link}`} className="relative w-full">
               <div
                 className={`absolute w-full h-full rounded-2xl ${
-                  idx === currentIdx
-                    ? 'transparent'
-                    : 'bg-black opacity-50 duration-200'
+                  idx === currentIdx ? 'transparent' : 'bg-black opacity-50 duration-200'
                 }`}
               />
               <Image
@@ -163,13 +150,9 @@ export default function Carousel() {
             <HiOutlineChevronRight className="w-4 h-4 text-[#212224]" />
           </button>
           <div className="absolute py-1 px-2 min-w-16 h-7 left-[620px] bottom-4 text-center bg-black/40 text-[13px] rounded-[14px]">
-            <span className="text-white">
-              {formattedIndex(currentIdx, bannerList.length)}
-            </span>
+            <span className="text-white">{formattedIndex(currentIdx, bannerList.length)}</span>
             <span className="mx-[2px] text-white/50">/</span>
-            <span className="text-white/50">
-              {formatNumber(bannerList.length)}
-            </span>
+            <span className="text-white/50">{formatNumber(bannerList.length)}</span>
           </div>
         </div>
       </div>

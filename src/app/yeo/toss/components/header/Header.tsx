@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Header() {
   return (
-    <nav className="fixed w-full h-[60px] bg-[#001d3a]/[0.18] backdrop-blur-lg border-b border-b-[#001b37]/[0.1]">
+    <nav className="fixed w-full h-[60px] bg-[#001d3a]/[0.18] backdrop-blur-lg border-b border-b-[#001b37]/[0.1] z-10">
       <div className="m-auto w-full h-full max-w-[1140px]">
         <div className="flex justify-between items-center mx-auto w-[92%] h-full max-w-[calc(100%-48px)]">
           <Link href="/yeo/toss" className="text-3xl font-semibold text-white">

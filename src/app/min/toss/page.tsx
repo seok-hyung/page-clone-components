@@ -68,16 +68,16 @@ function ImageTransitionSection({ images }: { images: string[] }) {
   const translateY4 = useTransform(scrollYProgress, [0.75, 0.83, 0.93, 1], [100, 0, 0, -20])
 
   // 불투명도 - 이미지가 오래 유지되도록 조정
-  const opacity1 = useTransform(scrollYProgress, [0, 0.08, 0.28, 0.35], [0, 1, 1, 0])
-  const opacity2 = useTransform(scrollYProgress, [0.25, 0.33, 0.53, 0.6], [0, 1, 1, 0])
-  const opacity3 = useTransform(scrollYProgress, [0.5, 0.58, 0.78, 0.85], [0, 1, 1, 0])
-  const opacity4 = useTransform(scrollYProgress, [0.75, 0.83, 0.93, 1], [0, 1, 1, 0])
+  const opacity1 = useTransform(scrollYProgress, [0, 0.08, 0.28, 0.35], [0, 1, 0.6, 0])
+  const opacity2 = useTransform(scrollYProgress, [0.25, 0.33, 0.53, 0.6], [0, 1, 0.6, 0])
+  const opacity3 = useTransform(scrollYProgress, [0.5, 0.58, 0.78, 0.85], [0, 1, 0.6, 0])
+  const opacity4 = useTransform(scrollYProgress, [0.75, 0.83, 0.93, 1], [0, 1, 0.6, 0])
 
   // scale 값 조정 - 이미지가 완전한 크기로 등장하고, 퇴장할 때만 작아지도록 수정
-  const scale1 = useTransform(scrollYProgress, [0, 0.08, 0.28, 0.35], [1, 1, 1, 0.8])
-  const scale2 = useTransform(scrollYProgress, [0.25, 0.33, 0.53, 0.6], [1, 1, 1, 0.8])
-  const scale3 = useTransform(scrollYProgress, [0.5, 0.58, 0.78, 0.85], [1, 1, 1, 0.8])
-  const scale4 = useTransform(scrollYProgress, [0.75, 0.83, 0.93, 1], [1, 1, 1, 0.8])
+  const scale1 = useTransform(scrollYProgress, [0, 0.08, 0.28, 0.35], [1, 1, 1, 0.9])
+  const scale2 = useTransform(scrollYProgress, [0.25, 0.33, 0.53, 0.6], [1, 1, 1, 0.9])
+  const scale3 = useTransform(scrollYProgress, [0.5, 0.58, 0.78, 0.85], [1, 1, 1, 0.9])
+  const scale4 = useTransform(scrollYProgress, [0.75, 0.83, 0.93, 1], [1, 1, 1, 0.9])
 
   const transforms = [
     { y: translateY1, opacity: opacity1, scale: scale1 },
@@ -98,18 +98,18 @@ function ImageTransitionSection({ images }: { images: string[] }) {
   const titleY4 = useTransform(scrollYProgress, [0.85, 0.87, 0.9, 0.93], [30, 0, 0, -30])
 
   // 설명(p) 애니메이션 - 제목이 완전히 보이는 상태에서 시작
-  const descOpacity1 = useTransform(scrollYProgress, [0.15, 0.18, 0.25, 0.28], [0, 1, 1, 0])
-  const descOpacity2 = useTransform(scrollYProgress, [0.4, 0.43, 0.5, 0.53], [0, 1, 1, 0])
-  const descOpacity3 = useTransform(scrollYProgress, [0.65, 0.68, 0.75, 0.78], [0, 1, 1, 0])
-  const descOpacity4 = useTransform(scrollYProgress, [0.88, 0.89, 0.9, 0.93], [0, 1, 1, 0])
+  const descOpacity1 = useTransform(scrollYProgress, [0.15, 0.18, 0.25, 0.28], [0, 1, 0.9, 0])
+  const descOpacity2 = useTransform(scrollYProgress, [0.4, 0.43, 0.5, 0.53], [0, 1, 0.9, 0])
+  const descOpacity3 = useTransform(scrollYProgress, [0.65, 0.68, 0.75, 0.78], [0, 1, 0.9, 0])
+  const descOpacity4 = useTransform(scrollYProgress, [0.88, 0.89, 0.9, 0.93], [0, 1, 0.9, 0])
 
-  const descY1 = useTransform(scrollYProgress, [0.15, 0.18, 0.25, 0.28], [30, 0, 0, -30])
-  const descY2 = useTransform(scrollYProgress, [0.4, 0.43, 0.5, 0.53], [30, 0, 0, -30])
-  const descY3 = useTransform(scrollYProgress, [0.65, 0.68, 0.75, 0.78], [30, 0, 0, -30])
-  const descY4 = useTransform(scrollYProgress, [0.88, 0.89, 0.9, 0.93], [30, 0, 0, -30])
+  const descY1 = useTransform(scrollYProgress, [0.15, 0.18, 0.25, 0.28], [50, 0, 0, -30])
+  const descY2 = useTransform(scrollYProgress, [0.4, 0.43, 0.5, 0.53], [50, 0, 0, -30])
+  const descY3 = useTransform(scrollYProgress, [0.65, 0.68, 0.75, 0.78], [50, 0, 0, -30])
+  const descY4 = useTransform(scrollYProgress, [0.88, 0.89, 0.9, 0.93], [50, 0, 0, -30])
 
   return (
-    <div ref={ref} className="h-[1000vh] relative flex items-center justify-center">
+    <div ref={ref} className="h-[800vh] relative flex items-center justify-center">
       {images.map((src, index) => (
         <motion.div
           key={index}
@@ -118,7 +118,7 @@ function ImageTransitionSection({ images }: { images: string[] }) {
             y: transforms[index].y,
             scale: transforms[index].scale,
           }}
-          className="fixed top-[10%] -translate-x-1/2 -translate-y-1/4 w-[80vw] h-[80vh] max-w-[1600px] h-auto aspect-[16/9] rounded-3xl overflow-hidden shadow-lg">
+          className="fixed top-[30%] -translate-x-1/2 -translate-y-1/4 w-[80vw] max-w-[1600px] h-auto aspect-[16/9] rounded-3xl overflow-hidden shadow-lg">
           <Image src={src} alt={`배너 ${index + 1}`} width={1200} height={675} className="w-full h-full object-cover" />
 
           {/* 텍스트 영역 */}

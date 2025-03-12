@@ -36,8 +36,14 @@ const Home: React.FC = () => {
   const dashboards: { name: string; links: ProjectLink[] }[] = [
     { name: 'Min', links: [{ href: '/min/dashboard', label: 'Dashboard' }] },
     { name: 'Seok', links: [{ href: '/seok/dashboard', label: 'Dashboard' }] },
-    { name: 'Woong', links: [{ href: '/woong/dashboard', label: 'Dashboard' }] },
+    // { name: 'Woong', links: [{ href: '/woong/dashboard', label: 'Dashboard' }] },
     { name: 'Yeo', links: [{ href: '/yeo/dashboard', label: 'Dashboard' }] },
+  ]
+  const tossScrollPage: { name: string; links: ProjectLink[] }[] = [
+    { name: 'Min', links: [{ href: '/min/toss', label: 'Toss' }] },
+    { name: 'Seok', links: [{ href: '/seok/toss', label: 'Toss' }] },
+    // { name: 'Woong', links: [{ href: '/woong/toss', label: 'Toss' }] },
+    { name: 'Yeo', links: [{ href: '/yeo/toss', label: 'Toss' }] },
   ]
 
   return (
@@ -53,6 +59,12 @@ const Home: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {dashboards.map((dashboard, idx) => (
           <ProjectSection key={idx} title={dashboard.name} links={dashboard.links} />
+        ))}
+      </div>
+      <h1 className="text-3xl font-bold text-center mb-6 mt-12">토스 스크롤</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {tossScrollPage.map((tossScroll, idx) => (
+          <ProjectSection key={idx} title={tossScroll.name} links={tossScroll.links} />
         ))}
       </div>
     </div>

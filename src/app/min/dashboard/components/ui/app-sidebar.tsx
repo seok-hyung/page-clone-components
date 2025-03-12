@@ -19,8 +19,8 @@ const items = [
     icon: Home,
   },
   {
-    title: '두번째 대시보드',
-    url: '#',
+    title: '토스 애니메이션',
+    url: '/min/toss',
     icon: Inbox,
   },
   {

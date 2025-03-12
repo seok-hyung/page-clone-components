@@ -57,7 +57,7 @@ function ImageTransitionSection({ images }: { images: string[] }) {
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start end', 'end center'],
+    offset: ['start start', 'end end'],
   })
 
   // ✅ 스크롤 진행에 따른 애니메이션 값 조정 - 이미지 표시 시간 늘림

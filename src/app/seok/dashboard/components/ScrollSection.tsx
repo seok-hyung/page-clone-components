@@ -41,63 +41,40 @@ export const ScrollSection = () => {
     offset: ['start start', 'end end'],
   })
 
-  // 각 섹션에 대한 애니메이션 값들을 미리 계산
+  // 각 섹션의 애니메이션 생성
   const animations = imageContainer.map((_, index) => {
     const containerStart = index * 0.25
-    const containerMid1 = containerStart + 0.1
-    const containerMid2 = containerStart + 0.2
+    const imageStart = containerStart + 0.05
+    const titleStart = containerStart + 0.1
+    const contentStart = containerStart + 0.15
+    const holdPhase = containerStart + 0.2
     const containerEnd = containerStart + 0.25
-    const containerFade = containerStart + 0.4
-
-    // 섹션 투명도
-    const opacity = useTransform(
-      scrollYProgress,
-      [containerStart, containerMid1, containerMid2, containerFade],
-      [0, 1, 1, 0]
-    )
-
-    // 이미지 크기
-    const scale = useTransform(scrollYProgress, [containerMid2, containerEnd], [1, 0.95])
-
-    // 이미지 위치
-    const imageY = useTransform(
-      scrollYProgress,
-      [containerStart, containerMid1, containerMid2, containerEnd],
-      ['10vh', '0vh', '0vh', '-10vh']
-    )
-
-    // 타이틀 위치
-    const titleY = useTransform(
-      scrollYProgress,
-      [containerStart + 0.05, containerMid1 + 0.05, containerMid2, containerEnd],
-      ['30vh', '0vh', '0vh', '-10vh']
-    )
-
-    // 내용 위치
-    const contentY = useTransform(
-      scrollYProgress,
-      [containerMid1, containerMid2, containerEnd],
-      ['30vh', '0vh', '-10vh']
-    )
-
-    // 타이틀 투명도
-    const titleOpacity = useTransform(
-      scrollYProgress,
-      [containerStart + 0.05, containerMid1 + 0.05, containerMid2, containerEnd],
-      [0, 1, 1, 0]
-    )
-
-    // 내용 투명도
-    const contentOpacity = useTransform(scrollYProgress, [containerMid1, containerMid2, containerEnd], [0, 1, 0])
 
     return {
-      opacity,
-      scale,
-      imageY,
-      titleY,
-      contentY,
-      titleOpacity,
-      contentOpacity,
+      // 이미지 애니메이션
+      opacity: useTransform(scrollYProgress, [containerStart, imageStart, holdPhase, containerEnd], [0, 1, 1, 0]),
+      scale: useTransform(scrollYProgress, [holdPhase, containerEnd], [1, 0.95]),
+      imageY: useTransform(
+        scrollYProgress,
+        [containerStart, imageStart, holdPhase, containerEnd],
+        ['10vh', '0vh', '0vh', '-10vh']
+      ),
+
+      // 타이틀 애니메이션
+      titleY: useTransform(
+        scrollYProgress,
+        [imageStart, titleStart, holdPhase, containerEnd],
+        ['30vh', '0vh', '0vh', '-10vh']
+      ),
+      titleOpacity: useTransform(scrollYProgress, [imageStart, titleStart, holdPhase, containerEnd], [0, 1, 1, 0]),
+
+      // 컨텐츠 애니메이션
+      contentY: useTransform(
+        scrollYProgress,
+        [titleStart, contentStart, holdPhase, containerEnd],
+        ['30vh', '0vh', '0vh', '-10vh']
+      ),
+      contentOpacity: useTransform(scrollYProgress, [titleStart, contentStart, holdPhase, containerEnd], [0, 1, 1, 0]),
     }
   })
 

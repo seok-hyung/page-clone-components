@@ -118,8 +118,8 @@ function ImageTransitionSection({ images }: { images: string[] }) {
             y: transforms[index].y,
             scale: transforms[index].scale,
           }}
-          className="fixed top-[30%] -translate-x-1/2 -translate-y-1/4 w-[80vw] max-w-[1600px] h-auto aspect-[16/9] rounded-3xl overflow-hidden shadow-lg">
-          <Image src={src} alt={`배너 ${index + 1}`} width={1200} height={675} className="w-full h-full object-cover" />
+          className="fixed top-[10%] w-[80vw] max-w-[1600px] h-auto aspect-[16/9] rounded-3xl overflow-hidden shadow-lg">
+          <Image src={src} alt={`배너 ${index + 1}`} fill className="w-full h-full object-cover" />
 
           {/* 텍스트 영역 */}
           <div className="absolute inset-0 flex flex-col justify-center items-end mr-16">

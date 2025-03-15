@@ -3,7 +3,7 @@
 import { useRef } from 'react'
 import { useScroll } from 'framer-motion'
 import { HistoryScrollItem } from './history-scroll-item'
-import { imageContainer } from './data'
+import { imageContainer } from './history-scroll-data'
 
 export const HistoryScrollSection = () => {
   const containerRef = useRef<HTMLDivElement>(null)

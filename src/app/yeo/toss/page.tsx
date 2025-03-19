@@ -7,10 +7,8 @@ export default function TossPage() {
     <>
       <Header />
       <section className="inset-auto bg-black">
-        {/* <div className="pt-[100vh] min-h-screen"> */}
         <IntroList />
-        <HistoryList />
-        {/* </div> */}
+        {/* <HistoryList /> */}
       </section>
     </>
   )

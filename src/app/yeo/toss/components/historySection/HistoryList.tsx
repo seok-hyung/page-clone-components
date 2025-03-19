@@ -1,8 +1,8 @@
 'use client'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { historyData } from '../constants/historyData'
-import HistoryCard from './HistoryCard'
 import { useEffect, useRef, useState } from 'react'
+import { historyData } from '../../constants/data'
+import HistoryCard from './HistoryCard'
 
 export default function HistoryList() {
   const historyDataList = historyData
@@ -31,7 +31,7 @@ export default function HistoryList() {
   }, [scrollY, isFixed])
 
   return (
-    <div className="pt-[100vh] pb-[300vh] min-h-screen" style={{ height: divHeight.get() }}>
+    <div className="pb-[300vh] min-h-screen" style={{ height: divHeight.get() }}>
       <motion.ul
         ref={ref}
         className={`relative m-auto left-0 top-0 right-auto bottom-auto w-full`}

@@ -1,9 +1,9 @@
 import { AnimatePresence, motion, useInView } from 'framer-motion'
-import { historyData } from '../types/types'
 import { useRef } from 'react'
+import { tossData } from '../../types/types'
 
 interface HistoryCardProps {
-  data: historyData
+  data: tossData
   index: number
 }
 

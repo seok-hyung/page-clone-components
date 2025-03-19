@@ -26,12 +26,12 @@ export default function IntroList() {
               <IntroCard data={data} key={data.id} index={index} scrollYProgress={scrollYProgress} />
             ))}
           </div>
-          <motion.button
+          <motion.div
             className="flex justify-center items-center w-[144px] h-[54px] p-[18px] text-[20px] font-medium text-[#191f28] bg-white rounded-full"
             style={{ opacity: buttonOpacity, y: buttonY }}
             whileHover={{ scale: 1.1, transition: { duration: 0.2 }, backgroundColor: '#333D4B', color: 'white' }}>
             <Link href="/yeo/toss">더 알아보기</Link>
-          </motion.button>
+          </motion.div>
         </div>
       </div>
     </div>

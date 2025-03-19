@@ -28,3 +28,27 @@ export const historyData = [
       '2019년 2월, 송금부터 계좌, 대출, 보험, 투자까지. 토스는 삶에서 꼭 필요한 금융경험을 공 던지듯 쉽고 간편하게 만들기 시작했어요.',
   },
 ]
+
+export const IntroData = [
+  {
+    id: 1,
+    bgImage: '/toss/logo-story1.png',
+
+    title: '더 자유롭게.',
+    content: '푸른 컬러는 모두의 자유로운 금융생활을 꿈꾸는 토스의 비전을',
+  },
+  {
+    id: 2,
+    bgImage: '/toss/logo-story2.png',
+
+    title: '더 유연하게.',
+    content: '부드럽게 이어지는 곡선은 끊임없이 도전하는 토스의 태도를',
+  },
+  {
+    id: 3,
+    bgImage: '/toss/logo-story3.png',
+
+    title: '더 대담하게.',
+    content: '공간감을 가진 토스의 새로운 로고는 새로운 차원의 금융을 만들겠다는 토스의 의지를 담고 있습니다.',
+  },
+]

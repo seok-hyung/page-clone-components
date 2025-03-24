@@ -1,7 +1,7 @@
 export const YoutubeVideo = () => {
   return (
     <video
-      className="tossteam-video-1p9vbdz"
+      className="w-full h-full object-cover"
       poster="https://common-fe.toss.im/resources/adaptive?light=https%3A%2F%2Fcore-cdn-fe.toss.im%2Fvideo%2Fframe%2F%3Fsource%3Dhttps%3A%2F%2Fstatic.toss.im%2Fhomepage-static%2Fnewtoss%2Fnew-journey-bg.mp4%26t%3D00%3A00%3A00.000&amp;dark=https%3A%2F%2Fcore-cdn-fe.toss.im%2Fvideo%2Fframe%2F%3Fsource%3Dhttps%3A%2F%2Fstatic.toss.im%2Fhomepage-static%2Fnewtoss%2Fnew-journey-bg.mp4%26t%3D00%3A00%3A00.000&amp;lowlight=https%3A%2F%2Fcore-cdn-fe.toss.im%2Fvideo%2Fframe%2F%3Fsource%3Dhttps%3A%2F%2Fstatic.toss.im%2Fhomepage-static%2Fnewtoss%2Fnew-journey-bg.mp4%26t%3D00%3A00%3A00.000&amp;lowdark=https%3A%2F%2Fcore-cdn-fe.toss.im%2Fvideo%2Fframe%2F%3Fsource%3Dhttps%3A%2F%2Fstatic.toss.im%2Fhomepage-static%2Fnewtoss%2Fnew-journey-bg.mp4%26t%3D00%3A00%3A00.000"
       autoPlay
       loop

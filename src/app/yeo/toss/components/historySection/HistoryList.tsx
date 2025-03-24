@@ -1,45 +1,21 @@
 'use client'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
+import { useScroll } from 'framer-motion'
+import { useRef } from 'react'
 import { historyData } from '../../constants/data'
 import HistoryCard from './HistoryCard'
 
 export default function HistoryList() {
   const historyDataList = historyData
-  const { scrollY } = useScroll()
-  const [isFixed, setIsFixed] = useState(false)
   const ref = useRef(null)
-  const divHeight = useTransform(scrollY, [0, 1080], ['auto', '1080px'])
-
-  useEffect(() => {
-    if (!ref.current) return
-
-    const ulTop = ref.current?.getBoundingClientRect().top + window.scrollY
-
-    const onScroll = () => {
-      const currentScrollY = scrollY.get()
-
-      if (ulTop <= currentScrollY) {
-        setIsFixed(true)
-      } else if (currentScrollY < ulTop && isFixed) {
-        setIsFixed(false)
-      }
-    }
-    const unsubscribe = scrollY.on('change', onScroll)
-
-    return () => unsubscribe()
-  }, [scrollY, isFixed])
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] })
 
   return (
-    <div className="pb-[300vh] min-h-screen" style={{ height: divHeight.get() }}>
-      <motion.ul
-        ref={ref}
-        className={`relative m-auto left-0 top-0 right-auto bottom-auto w-full`}
-        style={{ height: '100vh' }}>
+    <div ref={ref} className="relative min-h-[400vh] mb-[100vh]">
+      <ul className="sticky m-auto top-0 left-0 w-full h-screen">
         {historyDataList.map((data, index) => (
-          <HistoryCard data={data} key={index} index={index} />
+          <HistoryCard data={data} key={data.id} index={index} scrollYProgress={scrollYProgress} />
         ))}
-      </motion.ul>
+      </ul>
     </div>
   )
 }

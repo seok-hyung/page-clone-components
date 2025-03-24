@@ -9,7 +9,7 @@ export default function TossPage() {
       <Header />
       <section className="inset-auto bg-black">
         <IntroList />
-        {/* <HistoryList /> */}
+        <HistoryList />
         <VisionMediaFlow />
       </section>
     </>

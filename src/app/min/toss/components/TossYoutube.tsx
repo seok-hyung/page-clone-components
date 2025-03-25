@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Video() {
+export default function TossYoutube() {
   return (
     <video
       className="w-full h-full object-cover"

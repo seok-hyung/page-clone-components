@@ -1,8 +1,9 @@
-import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import Video from './Video'
+import { useRef } from 'react'
+
+import Image from 'next/image'
 import Link from 'next/link'
-import { PlayIcon } from 'lucide-react'
+import TossYoutube from './TossYoutube'
 
 export default function VideoAnimation() {
   const ref = useRef(null)
@@ -35,23 +36,32 @@ export default function VideoAnimation() {
           top: '50%',
           y: '-50%',
         }}>
-        <Video />
+        <TossYoutube />
         {/* 텍스트 오버레이 */}
         <motion.div
-          className="absolute inset-0 flex flex-col gap-8 items-center justify-center text-white p-8 bg-black/30"
+          className="absolute inset-0 flex flex-col gap-10 items-center justify-center text-white p-8 bg-black/30"
           style={{
             opacity: textOpacity,
             y: textY,
           }}>
-          <h2 className="text-9xl font-bold mb-4 text-center">
-            THE
-            <br />
-            JOURNEY
-          </h2>
-          <h3 className="text-4xl font-bold mb-4 text-center">Original Film by toss</h3>
-          <button className="bg-white text-black px-4 py-2 rounded-3xl text-2xl font-bold flex items-center gap-2">
-            <PlayIcon className="w-6 h-6" />
-            <Link href="#">오프닝 필름 보기</Link>
+          <div className="relative w-[70%] h-[50%]">
+            <Image src={'/toss/sm/THE_JOURNEY.svg'} alt="THE_JOURNEY" fill objectFit="contain" />
+          </div>
+          <button
+            className="bg-white group text-black px-4 py-2 
+					rounded-3xl text-2xl font-bold flex items-center gap-2 hover:bg-black hover:text-white">
+            <Link href="#" className="relative flex items-center gap-2">
+              <div className="relative w-6 h-6">
+                <Image
+                  src={'/toss/sm/play_icon.svg'}
+                  alt="play_icon"
+                  fill
+                  objectFit="contain"
+                  className="items-center group-hover:filter group-hover:invert"
+                />
+              </div>
+              <span>오프닝 필름 보기</span>
+            </Link>
           </button>
         </motion.div>
       </motion.div>

@@ -38,9 +38,11 @@ export default function MediaSection({ scrollYProgress }: { scrollYProgress: Mot
           className="w-3/5 max-w-[900px] mb-[60px]"
         />
         <motion.div
-          className="px-4 py-1 min-w-[180px] text-[#191f28] bg-[#f2f4f6] rounded-full"
+          className="px-4 py-1 min-w-[180px] text-[#191f28] bg-[#f2f4f6] rounded-full hover:bg-slate-700 group"
           style={{ opacity: buttonOpacity, y: buttonY }}>
-          <Link href="/yeo/toss" className="flex justify-center items-center text-[23px] font-medium">
+          <Link
+            href="/yeo/toss"
+            className="flex justify-center items-center text-[23px] font-medium group-hover:filter group-hover:invert">
             <Image src="/yeo/icons/play_icon.svg" width={20} height={20} alt="play 아이콘" className="mr-2" />
             오프닝 필름 보기
           </Link>

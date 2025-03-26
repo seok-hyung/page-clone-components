@@ -1,16 +1,14 @@
 import { HistoryScrollSection } from './components/history-scroll/history-scroll-section'
 import { IntroCardSection } from './components/intro-card-scroll/intro-card-section'
 import TheHeader from './components/the-header'
-import { LogoBlueBlack } from './components/logo-blue-black/logo-blue-black'
-import { YouTubeVideoSection } from './components/youtube-video/youtube-video'
+import { CombinedSection } from './components/blue-black-and-youtube-video-scroll/combined-section'
 export default function Page() {
   return (
     <>
       <TheHeader />
       <IntroCardSection />
       <HistoryScrollSection />
-      <LogoBlueBlack />
-      <YouTubeVideoSection />
+      <CombinedSection />
     </>
   )
 }

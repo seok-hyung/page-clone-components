@@ -4,3 +4,8 @@ export interface tossData {
   title: string
   content: string
 }
+
+export interface visionData {
+  id: number
+  content: string
+}

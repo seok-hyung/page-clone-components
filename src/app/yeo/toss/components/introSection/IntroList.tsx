@@ -16,8 +16,8 @@ export default function IntroList() {
   const buttonY = useTransform(scrollYProgress, [0.9, 1], [20, 0])
 
   return (
-    <div ref={ref} className="min-h-[300vh]">
-      <div className="fixed m-auto top-0 left-0 w-full h-screen">
+    <div ref={ref} className="min-h-[300vh] mb-[100vh]">
+      <div className="sticky m-auto top-0 left-0 w-full h-screen">
         <div className="flex flex-col justify-center items-center h-full">
           <div
             className="flex justify-center items-center mx-auto mt-[59px] mb-10 max-w-[1400px] max-h-[600px] break-keep"
